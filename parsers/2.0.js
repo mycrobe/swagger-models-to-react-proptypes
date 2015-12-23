@@ -54,7 +54,7 @@ var convertDefinitionObjectToPropTypes = function (definition, name) {
     return name + ': ' + getPropType(definition);
 };
 
-module.exports = function (swagger) {
+module.exports = function (swagger, options) {
     var header = 'Generated PropTypes for ' + swagger.url;
     console.log('\n/**\n\n' + header + '\n' + new Array(header.length + 1).join('-') + '\n\n**/\n\n');
 
@@ -66,4 +66,8 @@ module.exports = function (swagger) {
 
     console.log(indent(propTypes.join(',\n\n')));
     console.log('\n};\n\n');
+
+    if(options.commonJS) {
+        console.log('module.exports = PropTypes;\n');
+    }
 };

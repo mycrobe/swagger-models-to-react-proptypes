@@ -66,4 +66,8 @@ module.exports = function (swagger) {
 
     console.log(indent(propTypes.join(',\n\n')));
     console.log('\n};\n\n');
+
+    if(options.commonJS) {
+        console.log('module.exports = PropTypes;');
+    }
 };
